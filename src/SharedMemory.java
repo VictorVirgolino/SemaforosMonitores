@@ -34,7 +34,7 @@ public class SharedMemory {
     }
 
     public boolean podeComer(int id){
-        return !estados.get(direita(id)).equals("Comendo") || !estados.get(esquerda(id)).equals("Comendo");
+        return !estados.get(direita(id)).equals("Comendo") && !estados.get(esquerda(id)).equals("Comendo");
     }
 
     public boolean direitaEsperando(int id){

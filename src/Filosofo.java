@@ -15,7 +15,7 @@ public class Filosofo implements Runnable {
         while(true){
             pegarTalheres(id);
             try {
-                Thread.sleep(3000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -30,7 +30,6 @@ public class Filosofo implements Runnable {
             e.printStackTrace();
         }
         sm.getEstados().set(id, "Com Fome");
-        sm.printEstados();
         if(sm.podeComer(id)) {
             sm.getFilosofos().get(id).release();
             sm.getEstados().set(id, "Comendo");
@@ -67,6 +66,8 @@ public class Filosofo implements Runnable {
             sm.printEstados();
             sm.getFilosofos().get(sm.esquerda(id)).release();
         }
+
+        sm.getMutex().release();
 
     }
 }
